@@ -14,7 +14,6 @@ import logging
 #                 # filename='myapp.log',
 #                 # filemode='w'
 #                     )
-from test import testAAA
 
 logging.basicConfig(level=logging.INFO)
 
