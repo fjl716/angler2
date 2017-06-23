@@ -20,7 +20,7 @@ containers:
     protocol:
       type: json
     source:
-      port: '8081'
+      port: '8073'
       type: websocket
 id: 58f9a41a7d078e0cae4626ef
 name: cloud-room
