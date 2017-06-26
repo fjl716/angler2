@@ -1,9 +1,4 @@
-def factory(params):
-    service = params.get('service')
-    if service is None:
-        service = 'mongo'
-    collection = params['collection']
-
+def factory(collection, service='mongo'):
     def invoke(services, packet, response):
         mongo = services[service]
         result = mongo[collection].find(packet['data'])

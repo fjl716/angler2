@@ -6,8 +6,8 @@ containers:
         result:
         - mongo.paging
       user_qrcode:
-        event: user.qrcode
         package: angler.events.wechat.qrcode
+        event: user.qrcode
         result: user._qrcode
       zookeeper_delete:
         event: zookeeper.delete

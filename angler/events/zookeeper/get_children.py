@@ -1,5 +1,4 @@
-def factory(params):
-    service = params.get('service')
+def factory(service='zookeeper'):
     if service is None:
         service = 'zookeeper'
 

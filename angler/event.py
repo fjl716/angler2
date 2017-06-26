@@ -1,3 +1,4 @@
+import inspect
 import re
 
 
@@ -10,7 +11,14 @@ class Event(object):
 
 def event_package_factory(event, package, params):
     mod = __import__(package, fromlist=[''])
-    data = mod.factory(params)
+    param_list = []
+    for name in inspect.signature(mod.factory).parameters.keys():
+        value = params.get(name)
+        if value is not None:
+            param_list.append(value)
+        else:
+            break
+    data = mod.factory(*param_list)
     result = data.get('result')
     if result is None:
         result = []

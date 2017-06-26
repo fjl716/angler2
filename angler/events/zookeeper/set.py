@@ -1,10 +1,7 @@
 import json
 
 
-def factory(params):
-    service = params.get('service')
-    if service is None:
-        service = 'zookeeper'
+def factory(service='zookeeper'):
 
     def invoke(services, packet, response):
         zookeeper = services[service]
