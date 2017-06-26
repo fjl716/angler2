@@ -5,6 +5,10 @@ containers:
         event: mongo.paging
         result:
         - mongo.paging
+      user_qrcode:
+        event: user.qrcode
+        package: angler.events.wechat.qrcode
+        result: user._qrcode
       zookeeper_delete:
         event: zookeeper.delete
         package: angler.events.zookeeper.delete
@@ -25,6 +29,12 @@ containers:
 id: 58f9a41a7d078e0cae4626ef
 name: cloud-room
 services:
+  cache:
+    package: angler.services.cache
+  wechat:
+    package: angler.services.wechat
+    app_id: wxb958d649b3d8816b
+    secret: 51256b0c05a7f588670b6427ccb07837
   mongo:
     collections:
     - init:

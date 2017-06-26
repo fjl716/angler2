@@ -19,14 +19,30 @@ class Zookeeper(IService):
         self.zk.stop()
 
     def get(self, path):
-        node = self.zk.get(self.base_path + path)
-        return json.loads(node[0].decode('utf-8'))
+        path = self.base_path + path
+        if not self.zk.exists(path):
+            return None
+        node = self.zk.get(path)
+        value = node[0].decode('utf-8')
+        try:
+            return json.loads(value)
+        except:
+            return value
 
     def set(self, path, value):
+        path = self.base_path + path
+        value = bytes('{0}'.format(value), 'utf-8')
+        try:
+            value = json.dumps(value)
+        except:
+            pass
         self.zk.ensure_path(path)
         self.zk.set(path, value)
 
     def delete(self, path):
+        path = self.base_path + path
+        if not self.zk.exists(path):
+            return None
         self.zk.delete(path)
 
     def get_children(self, path):

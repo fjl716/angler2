@@ -16,6 +16,7 @@ class Angler(object):
         self.containers = dict()
         self.services = dict()
         self.logger = logging.getLogger('Angler[{0}]'.format(angler_id))
+        self.running = False
 
     def send(self, equipment: str, packet: dict):
         sp = self.zookeeper.get('equipments/{0}'.format(equipment))[0].split(':')
@@ -30,7 +31,6 @@ class Angler(object):
         self.zookeeper.start(self)
 
         def modify_service(name):
-            print(name)
             self.name = name
 
         def remove_service():
@@ -51,7 +51,8 @@ class Angler(object):
                     if service is None:
                         return
                     self.services[service_name] = service
-                    self.services[service_name].start(self)
+                    if self.running:
+                        self.services[service_name].start(self)
                     self.logger.info('add service {0}'.format(service_name))
 
                 def remove_service():
@@ -66,6 +67,10 @@ class Angler(object):
                         remove_service
                     )
         self.zookeeper.watch_children('services', init_services)
+
+        self.running = True
+        for service in self.services.values():
+            service.start(self)
 
         # 初始化containers
         def init_containers(container_names):
