@@ -9,6 +9,7 @@ def invoke(services, packet, response):
             'remote': True
         })
     else:
+        del user['password']
         response.send({
             'data': user,
             'remote': True

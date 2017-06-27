@@ -44,7 +44,11 @@ class Container(IService):
                     packet['event'] = event.result[0]
                 if equipment is None:
                     if remote:
-                        self.source.send(channel_id, packet)
+                        out_packet = {
+                            'event': packet['event'],
+                            'data': packet['data'],
+                        }
+                        self.source.send(channel_id, out_packet)
                     self.packet_arrive(channel_id, packet, new_path)
                 else:
                     self.angler.send(equipment, packet)
