@@ -1,10 +1,10 @@
 containers:
   websocket:
     events:
-      58f5a82bd0c65dbcb8559f21:
-        event: mongo.paging
+      user_login:
+        event: user.login
         result:
-        - mongo.paging
+        - user._login
       user_qrcode:
         package: angler.events.wechat.qrcode
         event: user.qrcode
@@ -37,18 +37,11 @@ services:
     secret: 51256b0c05a7f588670b6427ccb07837
   mongo:
     collections:
-    - init:
-      - id: new_id()
-      name: sidebar
-      simple:
-      - _id
-      - name
-    - init:
-      - id: new_id()
-      name: user
-      simple:
-      - _id
-      - name
+      user:
+        init:
+          id: new_id()
+        simple: [_id,name]
+      sidebar:
     database: cloudroom
     host: localhost
     package: angler.services.mongo

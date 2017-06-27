@@ -16,7 +16,7 @@ encoder = JSONEncoder()
 
 class JsonProtocol(AProtocol):
     def serialize(self, packet):
-        return json.dumps(packet)
+        return encoder.encode(packet)
 
     def parse(self, data):
         return json.loads(data)

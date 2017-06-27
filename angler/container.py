@@ -31,7 +31,7 @@ class Container(IService):
             response = Response()
             event.invoke(
                 self.angler.services,
-                packet,
+                packet.get('data'),
                 response
             )
             new_path = path[:]
@@ -40,6 +40,8 @@ class Container(IService):
             for packet in response.packets:
                 equipment = packet.get('equipment')
                 remote = packet.get('remote')
+                if packet.get('event') is None and len(event.result) == 1:
+                    packet['event'] = event.result[0]
                 if equipment is None:
                     if remote:
                         self.source.send(channel_id, packet)
