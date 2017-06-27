@@ -9,7 +9,7 @@ class Event(object):
         self.invoke = invoke
 
 
-def event_package_factory(event, package, params):
+def event_package_factory(package, params):
     mod = __import__(package, fromlist=[''])
     param_list = []
     for name in inspect.signature(mod.factory).parameters.keys():
@@ -22,6 +22,9 @@ def event_package_factory(event, package, params):
     result = data.get('result')
     if result is None:
         result = []
+    event = data.get('event')
+    if event is None:
+        event = params.get('event')
     return Event(event, result, data['invoke'])
 
 
@@ -45,4 +48,4 @@ def event_factory(node):
     if script is not None:
         return event_script_factory(event, result, script)
     else:
-        return event_package_factory(event, package, node)
+        return event_package_factory(package, node)

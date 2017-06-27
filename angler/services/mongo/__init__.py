@@ -16,5 +16,6 @@ def factory(name, conf):
         if item[1] is not None:
             init = item[1].get('init', init)
             simple = item[1].get('simple', simple)
-            mongo[name] = MongoTable(name, init, simple)
+        mongo[name] = MongoTable(name, init, simple)
+        print(name)
     return mongo

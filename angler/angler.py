@@ -94,7 +94,9 @@ class Angler(object):
                         for event_name in event_names:
                             if container.events.get(event_name) is None:
                                 def modify_event(event_conf):
-                                    container.events[event_name] = event_factory(event_conf)
+                                    event = event_factory(event_conf)
+                                    self.logger.info('event {0} => {1}'.format(event.event, event.result))
+                                    container.events[event_name] = event
 
                                 def remove_event():
                                     del container.events[event_name]

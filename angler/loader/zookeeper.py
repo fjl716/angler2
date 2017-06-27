@@ -78,7 +78,9 @@ class ZKLoader(ILoader):
                         for event_name in event_names:
                             if container.events.get(event_name) is None:
                                 def modify_event(event_conf):
-                                    container.events[event_name] = event_factory(event_conf)
+                                    event = event_factory(event_conf)
+                                    container.events[event_name] = event
+                                    angler.logger.logger.info('event {0} -> {1}'.format(event.event, event.result))
 
                                 def remove_event():
                                     del container.events[event_name]
