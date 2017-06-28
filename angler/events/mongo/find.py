@@ -1,7 +1,7 @@
 def factory(collection, service='mongo'):
     def invoke(services, packet, response):
         mongo = services[service]
-        result = mongo[collection].find(packet['data'])
+        result = mongo[collection].find(packet)
         response.send({
             'data': result,
             'remote': True

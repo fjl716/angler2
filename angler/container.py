@@ -1,4 +1,7 @@
 from functools import partial
+
+import sys
+
 from angler.service import IService
 
 
@@ -29,11 +32,15 @@ class Container(IService):
             if event.event.match(packet['event']) is None:
                 continue
             response = Response()
-            event.invoke(
-                self.angler.services,
-                packet.get('data'),
-                response
-            )
+            try:
+                event.invoke(
+                    self.angler.services,
+                    packet.get('data'),
+                    response
+                )
+            except:
+                self.angler.logger.error(sys.exc_info()[0])
+
             new_path = path[:]
             new_path.append(name)
 
