@@ -17,5 +17,4 @@ def factory(name, conf):
             init = item[1].get('init', init)
             simple = item[1].get('simple', simple)
         mongo[name] = MongoTable(name, init, simple)
-        print(name)
     return mongo

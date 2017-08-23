@@ -42,3 +42,4 @@ class ASource(IService):
             data = self.protocol.serialize(packet)
             if data is not None:
                 channel.send(data)
+

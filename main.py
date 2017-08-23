@@ -14,6 +14,7 @@ import logging
 #                 # filename='myapp.log',
 #                 # filemode='w'
 #                     )
+from angler.protocols import JsonProtocol
 
 logging.basicConfig(level=logging.INFO)
 

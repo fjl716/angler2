@@ -24,41 +24,48 @@ class Container(IService):
         self.packet_arrive(channel_id, packet, [])
 
     def packet_arrive(self, channel_id, packet, path):
-        for item in self.events.items():
-            name = item[0]
-            event = item[1]
+        for name, event in self.events.items():
             if name in path:
                 continue
             if event.event.match(packet['event']) is None:
                 continue
             response = Response()
-            try:
-                event.invoke(
-                    self.angler.services,
-                    packet.get('data'),
-                    response
-                )
-            except:
-                self.angler.logger.error(sys.exc_info()[0])
+
+            event.invoke(
+                self.angler.services,
+                packet,
+                response
+            )
+
+            # try:
+            #     event.invoke(
+            #         self.angler.services,
+            #         packet,
+            #         response
+            #     )
+            # except:
+            #     self.angler.logger.error(sys.exc_info()[0])
 
             new_path = path[:]
             new_path.append(name)
-
-            for packet in response.packets:
-                equipment = packet.get('equipment')
-                remote = packet.get('remote')
-                if packet.get('event') is None and len(event.result) == 1:
-                    packet['event'] = event.result[0]
+            for res_packet in response.packets:
+                equipment = res_packet.get('equipment')
+                remote = res_packet.get('remote')
+                if res_packet.get('event') is None and len(event.result) == 1:
+                    res_packet['event'] = event.result[0]
                 if equipment is None:
                     if remote:
                         out_packet = {
-                            'event': packet['event'],
-                            'data': packet['data'],
+                            'event': res_packet['event'],
                         }
+                        if 'error' in res_packet:
+                            out_packet['error'] = res_packet['error']
+                        elif 'data' in res_packet:
+                            out_packet['data'] = res_packet['data']
                         self.source.send(channel_id, out_packet)
-                    self.packet_arrive(channel_id, packet, new_path)
+                        self.packet_arrive(channel_id, res_packet, new_path)
                 else:
-                    self.angler.send(equipment, packet)
+                    self.angler.send(equipment, res_packet)
 
     def bind_channel(self, equipment, channel):
         path = '/angler/equipments/{0}/packets'.format(equipment)

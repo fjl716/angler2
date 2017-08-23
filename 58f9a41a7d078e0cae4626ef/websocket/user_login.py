@@ -1,7 +1,7 @@
 def invoke(services, packet, response):
     user = services['mongo']['user'].find_one({
-        'loginid': packet.get('loginid'),
-        'password': packet.get('password')
+        'loginid': packet['data']['loginid'],
+        'password': packet['data']['password']
     })
     if user is None:
         response.send({

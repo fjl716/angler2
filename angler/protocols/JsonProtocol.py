@@ -14,9 +14,21 @@ class JSONEncoder(json.JSONEncoder):
 encoder = JSONEncoder()
 
 
+class JSONDecoder(json.JSONDecoder):
+    def __init__(self):
+        json.JSONDecoder.__init__(self, object_hook=self.dict2object)
+
+    def dict2object(self, obj):
+        # for key in obj.keys():
+            # value = obj[key]
+            # if type(value) == dict:
+            #     print(value)
+        return obj
+
+
 class JsonProtocol(AProtocol):
     def serialize(self, packet):
         return json.dumps(packet, cls=JSONEncoder, sort_keys=False)
 
     def parse(self, data):
-        return json.loads(data)
+        return json.loads(data, cls=JSONDecoder)

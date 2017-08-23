@@ -1,6 +1,3 @@
-import json
-
-from bson import ObjectId
 from pymongo import MongoClient
 
 from angler.service import IService

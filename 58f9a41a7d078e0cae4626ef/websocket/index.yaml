@@ -1,0 +1,336 @@
+# user login
+user_login:
+  event: user.login
+  result:
+  - user._login
+
+#sidebar findall
+sidebar_findall:
+  event: user._login
+  result:
+  - sidebar._findall
+
+# customer mongo
+customer_delete:
+  package: angler.events.mongo.delete
+  collection: customer
+customer_find:
+  package: angler.events.mongo.find
+  collection: customer
+customer_findall:
+  package: angler.events.mongo.findall
+  collection: customer
+customer_findone:
+  package: angler.events.mongo.findone
+  collection: customer
+customer_findsimple:
+  package: angler.events.mongo.findsimple
+  collection: customer
+customer_findsimples:
+  package: angler.events.mongo.findsimples
+  collection: customer
+customer_insert:
+  package: angler.events.mongo.insert
+  collection: customer
+customer_paging:
+  package: angler.events.mongo.paging
+  collection: customer
+customer_update:
+  package: angler.events.mongo.update
+  collection: customer
+
+# order mongo
+order_delete:
+  package: angler.events.mongo.delete
+  collection: order
+order_find:
+  package: angler.events.mongo.find
+  collection: order
+order_findall:
+  package: angler.events.mongo.findall
+  collection: order
+order_findone:
+  package: angler.events.mongo.findone
+  collection: order
+order_findsimple:
+  package: angler.events.mongo.findsimple
+  collection: order
+order_findsimples:
+  package: angler.events.mongo.findsimples
+  collection: order
+order_insert:
+  package: angler.events.mongo.insert
+  collection: order
+order_paging:
+  package: angler.events.mongo.paging
+  collection: order
+order_update:
+  package: angler.events.mongo.update
+  collection: order
+
+# user qrcode
+user_qrcode:
+  package: angler.events.wechat.qrcode
+  event: user.qrcode
+  result: user._qrcode
+
+# user mongo
+user_delete:
+  package: angler.events.mongo.delete
+  collection: user
+user_find:
+  package: angler.events.mongo.find
+  collection: user
+user_findall:
+  package: angler.events.mongo.findall
+  collection: user
+user_findone:
+  package: angler.events.mongo.findone
+  collection: user
+user_findsimple:
+  package: angler.events.mongo.findsimple
+  collection: user
+user_findsimples:
+  package: angler.events.mongo.findsimples
+  collection: user
+user_insert:
+  package: angler.events.mongo.insert
+  collection: user
+user_paging:
+  package: angler.events.mongo.paging
+  collection: user
+user_update:
+  package: angler.events.mongo.update
+  collection: user
+
+# role mongo
+role_delete:
+  package: angler.events.mongo.delete
+  collection: role
+role_find:
+  package: angler.events.mongo.find
+  collection: role
+role_findall:
+  package: angler.events.mongo.findall
+  collection: role
+role_findone:
+  package: angler.events.mongo.findone
+  collection: role
+role_findsimple:
+  package: angler.events.mongo.findsimple
+  collection: role
+role_findsimples:
+  package: angler.events.mongo.findsimples
+  collection: role
+role_insert:
+  package: angler.events.mongo.insert
+  collection: role
+role_paging:
+  package: angler.events.mongo.paging
+  collection: role
+role_update:
+  package: angler.events.mongo.update
+  collection: role
+
+# calendar mongo
+calendar_delete:
+  package: angler.events.mongo.delete
+  collection: calendar
+calendar_find:
+  package: angler.events.mongo.find
+  collection: calendar
+calendar_findall:
+  package: angler.events.mongo.findall
+  collection: calendar
+calendar_findone:
+  package: angler.events.mongo.findone
+  collection: calendar
+calendar_findsimple:
+  package: angler.events.mongo.findsimple
+  collection: calendar
+calendar_findsimples:
+  package: angler.events.mongo.findsimples
+  collection: calendar
+calendar_insert:
+  package: angler.events.mongo.insert
+  collection: calendar
+calendar_paging:
+  package: angler.events.mongo.paging
+  collection: calendar
+calendar_update:
+  package: angler.events.mongo.update
+  collection: calendar
+
+# course mongo
+course_delete:
+  package: angler.events.mongo.delete
+  collection: course
+course_find:
+  package: angler.events.mongo.find
+  collection: course
+course_findall:
+  package: angler.events.mongo.findall
+  collection: course
+course_findone:
+  package: angler.events.mongo.findone
+  collection: course
+course_findsimple:
+  package: angler.events.mongo.findsimple
+  collection: course
+course_findsimples:
+  package: angler.events.mongo.findsimples
+  collection: course
+course_insert:
+  package: angler.events.mongo.insert
+  collection: course
+course_paging:
+  package: angler.events.mongo.paging
+  collection: course
+course_update:
+  package: angler.events.mongo.update
+  collection: course
+
+# paper mongo
+paper_delete:
+  package: angler.events.mongo.delete
+  collection: paper
+paper_find:
+  package: angler.events.mongo.find
+  collection: paper
+paper_findall:
+  package: angler.events.mongo.findall
+  collection: paper
+paper_findone:
+  package: angler.events.mongo.findone
+  collection: paper
+paper_findsimple:
+  package: angler.events.mongo.findsimple
+  collection: paper
+paper_findsimples:
+  package: angler.events.mongo.findsimples
+  collection: paper
+paper_insert:
+  package: angler.events.mongo.insert
+  collection: paper
+paper_paging:
+  package: angler.events.mongo.paging
+  collection: paper
+paper_update:
+  package: angler.events.mongo.update
+  collection: paper
+
+# clazz mongo
+clazz_delete:
+  package: angler.events.mongo.delete
+  collection: clazz
+clazz_find:
+  package: angler.events.mongo.find
+  collection: clazz
+clazz_findall:
+  package: angler.events.mongo.findall
+  collection: clazz
+clazz_findone:
+  package: angler.events.mongo.findone
+  collection: clazz
+clazz_findsimple:
+  package: angler.events.mongo.findsimple
+  collection: clazz
+clazz_findsimples:
+  package: angler.events.mongo.findsimples
+  collection: clazz
+clazz_insert:
+  package: angler.events.mongo.insert
+  collection: clazz
+clazz_paging:
+  package: angler.events.mongo.paging
+  collection: clazz
+clazz_update:
+  package: angler.events.mongo.update
+  collection: clazz
+
+# action mongo
+action_delete:
+  package: angler.events.mongo.delete
+  collection: action
+action_find:
+  package: angler.events.mongo.find
+  collection: action
+action_findall:
+  package: angler.events.mongo.findall
+  collection: action
+action_findone:
+  package: angler.events.mongo.findone
+  collection: action
+action_findsimple:
+  package: angler.events.mongo.findsimple
+  collection: action
+action_findsimples:
+  package: angler.events.mongo.findsimples
+  collection: action
+action_insert:
+  package: angler.events.mongo.insert
+  collection: action
+action_paging:
+  package: angler.events.mongo.paging
+  collection: action
+action_update:
+  package: angler.events.mongo.update
+  collection: action
+
+# result mongo
+result_delete:
+  package: angler.events.mongo.delete
+  collection: result
+result_find:
+  package: angler.events.mongo.find
+  collection: result
+result_findall:
+  package: angler.events.mongo.findall
+  collection: result
+result_findone:
+  package: angler.events.mongo.findone
+  collection: result
+result_findsimple:
+  package: angler.events.mongo.findsimple
+  collection: result
+result_findsimples:
+  package: angler.events.mongo.findsimples
+  collection: result
+result_insert:
+  package: angler.events.mongo.insert
+  collection: result
+result_paging:
+  package: angler.events.mongo.paging
+  collection: result
+result_update:
+  package: angler.events.mongo.update
+  collection: result
+
+# qrcode mongo
+qrcode_delete:
+  package: angler.events.mongo.delete
+  collection: qrcode
+qrcode_find:
+  package: angler.events.mongo.find
+  collection: qrcode
+qrcode_findall:
+  package: angler.events.mongo.findall
+  collection: qrcode
+qrcode_findone:
+  package: angler.events.mongo.findone
+  collection: qrcode
+qrcode_findsimple:
+  package: angler.events.mongo.findsimple
+  collection: qrcode
+qrcode_findsimples:
+  package: angler.events.mongo.findsimples
+  collection: qrcode
+qrcode_insert:
+  package: angler.events.mongo.insert
+  collection: qrcode
+qrcode_paging:
+  package: angler.events.mongo.paging
+  collection: qrcode
+qrcode_update:
+  package: angler.events.mongo.update
+  collection: qrcode
