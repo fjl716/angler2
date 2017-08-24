@@ -38,6 +38,7 @@ def push_file(zookeeper, angler_id):
     services_zk = angler_zk + '/services'
     services_path = angler_path + 'services/'
     service = load_yaml(services_path + 'index.yaml')
+    zookeeper.ensure_path(services_zk)
     for old_service in zookeeper.get_children(services_zk):
         if old_service not in service:
             zookeeper.delete('{0}/{1}'.format(services_zk, old_service))
@@ -56,6 +57,7 @@ def push_file(zookeeper, angler_id):
         set_value(zookeeper, container_zk, json.dumps(container))
 
         events_zk = container_zk + '/events'
+        zookeeper.ensure_path(events_zk)
         for old_event in zookeeper.get_children(events_zk):
             if old_event not in events.keys():
                 zookeeper.delete('{0}/{1}'.format(events_zk, old_event))

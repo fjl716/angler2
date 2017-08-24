@@ -1,0 +1,41 @@
+database: shop
+host: localhost
+package: angler.services.mongo
+port: 27017
+collections:
+  sidebar:
+    init:
+      _id: new_id()
+    simple: [_id,name]
+  equipment:
+    init:
+      _id: new_id()
+    simple: [_id,name]
+  customer:
+    init:
+      _id: new_id()
+    simple: [_id,name]
+  lease:
+    init:
+      _id: new_id()
+    simple: [_id,name]
+  order:
+    init:
+      _id: new_id()
+    simple: [_id,name]
+  product:
+    init:
+      _id: new_id()
+    simple: [_id,name]
+  role:
+    init:
+      _id: new_id()
+    simple: [_id,name]
+  user:
+    init:
+      _id: new_id()
+    simple: [_id,name]
+  service:
+    init:
+      _id: new_id()
+    simple: [_id,name]

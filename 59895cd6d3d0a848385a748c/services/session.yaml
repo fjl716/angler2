@@ -1,0 +1,5 @@
+session_type: mongo
+database: shop
+host: localhost
+package: angler.services.session
+port: 27017

@@ -1,0 +1,8 @@
+name: shop
+containers:
+  websocket:
+    protocol:
+        type: json
+    source:
+        port: '8073'
+        type: websocket

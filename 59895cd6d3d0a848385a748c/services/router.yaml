@@ -1,0 +1,4 @@
+drive: zookeeper
+hosts: 127.0.0.1:2181
+base_path: /
+package: angler.services.zookeeper
