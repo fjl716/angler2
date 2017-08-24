@@ -10,6 +10,35 @@ sidebar_findall:
   result:
   - sidebar._findall
 
+# product mongo
+product_delete:
+  package: angler.events.mongo.delete
+  collection: product
+product_find:
+  package: angler.events.mongo.find
+  collection: product
+product_findall:
+  package: angler.events.mongo.findall
+  collection: product
+product_findone:
+  package: angler.events.mongo.findone
+  collection: product
+product_findsimple:
+  package: angler.events.mongo.findsimple
+  collection: product
+product_findsimples:
+  package: angler.events.mongo.findsimples
+  collection: product
+product_insert:
+  package: angler.events.mongo.insert
+  collection: product
+product_paging:
+  package: angler.events.mongo.paging
+  collection: product
+product_update:
+  package: angler.events.mongo.update
+  collection: product
+
 # customer mongo
 customer_delete:
   package: angler.events.mongo.delete
